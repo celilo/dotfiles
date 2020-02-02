@@ -1,4 +1,3 @@
-# dotfiles
 # Installation
 ### Download and change folder
 ```
@@ -24,5 +23,3 @@ cd ~/dotfiles
 ./uninstall.sh
 ```
 
-
-Forked from https://github.com/flipsidecreations/dotfiles
