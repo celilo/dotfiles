@@ -18,12 +18,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/kurtm/perl5"; export PERL_MM_OPT;
 
 #kwm stuff
 export EDITOR="nano"
-#KWM added next line to enable wayland as default for GTK+ 3 and clutter 
-#export GDK_BACKEND='wayland,x11'
-#export CLUTTER_BACKEND=wayland
-
-#for depot-tools-git, which is needed to build Chomium OS
-#export PATH="${PATH}:/opt/depot_tools"
 
 # npm
 export PATH="$HOME/.node_modules/bin:$PATH"
@@ -61,7 +55,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -80,11 +74,22 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+#debian version of prompt
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+
+#lawrence systems     Comment previous
 if [ "$color_prompt" = yes ]; then
     PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
 else
     PS1='┌──[\u@\h]─[\w]\n└──╼ \$ '
 fi
+# end Lawrence systems color prompt
+
+
 
 # Set 'man' colors
 if [ "$color_prompt" = yes ]; then
@@ -100,6 +105,7 @@ if [ "$color_prompt" = yes ]; then
 	man "$@"
 	}
 fi
+
 
 unset color_prompt force_color_prompt
 
@@ -124,6 +130,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
 alias ll='ls -l'
 alias la='ls -A'
@@ -131,6 +140,10 @@ alias l='ls -CF'
 alias em='emacs -nw'
 alias dd='dd status=progress'
 alias _='sudo'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
