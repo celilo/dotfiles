@@ -1,0 +1,4 @@
+# If numlock is off, call the numlockx program to toggle it on
+if [ -x /usr/bin/numlockx ]; then
+      /usr/bin/numlockx on
+fi
