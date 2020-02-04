@@ -164,3 +164,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+source /home/kurtm/.config/broot/launcher/bash/br
