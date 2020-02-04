@@ -1,6 +1,7 @@
 #
 # ~/.bashrc
 #
+#
 
 #default stuff
 # If not running interactively, don't do anything
