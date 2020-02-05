@@ -8,3 +8,5 @@ fi
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 source /home/kurtm/.config/broot/launcher/bash/br
+
+export PATH="$HOME/.cargo/bin:$PATH"
