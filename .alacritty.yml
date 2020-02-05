@@ -12,7 +12,7 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: xterm-256color
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -61,6 +61,7 @@
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
   #startup_mode: Windowed
+   startup_mode: Maximized
 
   # Window title
   #title: Alacritty
@@ -101,6 +102,7 @@
 
 # Font configuration
 #font:
+font:
   # Normal (roman) font face
   #normal:
     # Font family
@@ -149,6 +151,7 @@
 
   # Point size
   #size: 11.0
+  size: 13.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
